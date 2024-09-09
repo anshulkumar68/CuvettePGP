@@ -27,7 +27,7 @@ function App() {
     <>
       <Navbar setActive={setActive}/>
       <Outlet/>
-      {renderComponent()}
+      {/* {renderComponent()} */}
     </>
   );
 }
