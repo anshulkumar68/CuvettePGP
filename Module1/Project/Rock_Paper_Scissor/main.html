@@ -1,19 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <link>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="rps-styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPS</title>
+<link rel="stylesheet" href="rps-styles.css">
 </head>
+
 <body>
     <main>
-        <div class="header">
-            <p class="header-line">ROCK</p>
-            <p class="header-line">PAPER</p>
-            <p class="header-line">SCISSOR</p>
+        <!-- TITLE -->
+        <div class="title-container">
+            <div id="title">
+                <p>ROCK</p>
+                <p>PAPER</p>
+                <p>SCISSORS</p>
+            </div>
+            <div class="score-cards">
+                <p id="score-cards-1">
+                    <span>COMPUTER </span>
+                    <span>SCORE</span>
+                    <span class="score computer-score">0</span>
+                </p>
+                <p id="score-cards-2">
+                    <span>YOUR</span>
+                    <span>SCORE</span>
+                    <span class="score your-score">0</span>
+                </p>
+            </div>
         </div>
+        <!-- ICON -->
+        <div class="icons-container">
+            <div class="icons-container-1">
+                <img id="stone" src="images/stone.png" alt="stone">
+                <img id="scissor" src="images/scissor.png" alt="scissor">
+            </div>
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+            <img id="paper" src="images/paper.png" alt="paper">
+    </div>
+        <!-- RULES -->
+         <div class="rule-btn-container">
+            <button id="rule-btn">RULES</button>
+         </div>
+
+         <div class="rule-container">
+            <h1 class="rule-title">Game Rules</h1>
+            <div class="close-container"><img id="close-btn" src="images/close.png" alt="close"></div>
+            <div class="rule-point">
+               <span>+</span> <p class="rule rule-1">Rock beats scissors, scissors beat paper, and paper beats rock.</p>
+               <span>+</span> <p class="rule rule-2"> Agree ahead of time whether you’ll count off “rock, paper, scissors, shoot” or just “rock, paper, scissors.”</p>
+               <span>+</span> <p class="rule rule-3">Use rock, paper, scissors to settle minor decisions or simply play to pass the time</p>
+               <span>+</span> <p class="rule rule-4">If both players lay down the same hand, each player lays down another hand</p>
+            </div>
+         </div>
     </main>
     <script src="rps-script.js"></script>
 </body>
+
 </html>
