@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", sans-serif;
+}
+body {
+  background-color: #8cc461;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  width: 30rem;
+  height: 5rem;
+  border: 2px solid white;
+  border-radius: 1rem;
+}
+.header-line{
+    color: white;
+    padding: 0.1rem 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
