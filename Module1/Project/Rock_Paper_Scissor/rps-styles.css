@@ -29,7 +29,7 @@ main {
   width: 45rem;
   border: 2px solid white;
   border-radius: 1rem;
-  margin: 4rem 2rem;
+  margin: 2rem 2rem;
   padding: 0.5rem;
 }
 
@@ -37,7 +37,7 @@ main {
   line-height: 2.5rem;
   color: white;
   font-weight: 500;
-  font-size: 2.4rem;
+  font-size: 2rem;
   letter-spacing: 0.3rem;
 }
 
@@ -46,35 +46,25 @@ main {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #656565;
   font-weight: 600;
 }
-
-#score-cards-1 {
+.score{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 9rem;
+  width: 8rem;
   background-color: white;
   border-radius: 1rem;
   padding: 0.5rem 3rem;
 }
-
-.score {
-  font-size: 3rem;
+.computer-score{
+  font-size: 2.5rem;
 }
-
-#score-cards-2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 9rem;
-  background-color: white;
-  border-radius: 1rem;
-  padding: 0.5rem 3rem;
+.your-score{
+  font-size: 2.5rem;
 }
 
 /* ICONS CONTAINER */
@@ -90,7 +80,7 @@ main {
   flex-direction: column;
   gap: 4.5rem;
   position: relative;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 .icons-container-1 {
   display: flex;
@@ -101,10 +91,9 @@ main {
   border: 1rem solid #0074b6;
   border-radius: 50%;
   padding: 1.4rem 1rem;
-  width: 8rem;
-  height: 7.7rem;
+  width: 7.5rem;
+  height: 7.2rem;
   box-shadow: inset -1px 1px 11px 0px #00000059;
-  /* box-shadow: inset 3px 5px 27px 0px #00000040; */
   z-index: 1;
 }
 #scissor {
@@ -112,8 +101,8 @@ main {
   border: 1rem solid #bd00ff;
   border-radius: 50%;
   padding: 1.2rem 1.8rem;
-  width: 7.8rem;
-  height: 7.5rem;
+  width: 7.2rem;
+  height: 7.1rem;
   box-shadow: inset -1px 1px 11px 0px #00000059;
   z-index: 1;
 }
@@ -122,8 +111,8 @@ main {
   border: 1rem solid #ffa943;
   border-radius: 50%;
   padding: 1.2rem 1.4rem;
-  width: 8rem;
-  height: 7.7rem;
+  width: 7.5rem;
+  height: 7.2rem;
   box-shadow: inset -1px 1px 11px 0px #00000059;
   z-index: 1;
 }
@@ -150,12 +139,17 @@ main {
   right: -1rem;
 }
 
-/* rule-btn-container */
-.rule-btn-container {
+/* RULE CONTAINER */
+.rule-container{
+  position: relative;
+}
+.rule-btn-container{
   display: flex;
+  justify-content: flex-end;
+  margin-right: 3rem;
 }
 #rule-btn {
-  padding: 0.3rem 1rem;
+  padding: 0.2rem 1rem;
   border: 4px solid white;
   border-radius: 0.5rem;
   background-color: transparent;
@@ -165,14 +159,7 @@ main {
   font-weight: 700;
   text-align: right;
 }
-
-/* RULE CONTAINER */
-.rule-btn-container{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 3rem;
-}
-.rule-container {
+.rule-book-container {
   background: #004429;
   color: white;
   border: 0.5rem solid white;
@@ -180,13 +167,19 @@ main {
   width: 17.5rem;
   height: 21.5rem;
   padding: 1rem;
-  position: relative;
+  position: absolute;
+  top: -22rem;
+  right: 3rem;
 }
-.close-container {
+.rule-title {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+.close-btn-container {
   background: #ff0000;
   padding: 0.7rem 0.7rem;
-  width: 2.3rem;
-  height: 2.7rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   position: absolute;
   right: -1rem;
@@ -194,14 +187,10 @@ main {
 }
 #close-btn {
   width: 1rem;
-  height: 1.3rem;
+  height: 1.2rem;
   text-align: center;
 }
-.rule-title {
-  text-align: center;
-  margin-bottom: 0.8rem;
-}
-.rule-point {
+.rule-book {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto auto;
@@ -210,7 +199,7 @@ main {
   column-gap: 1rem;
   row-gap: 0.8rem;
 }
-.rule-point span {
+.rule-book span {
   background-color: yellow;
   padding: 0 2px;
   font-size: 0.4rem;
