@@ -36,16 +36,15 @@
         <div class="icons">
             <div class="icons-container">
                 <div class="icons-container-1">
-                    <div class="move-container stone one"><img class="stone-img" src="images/move-1.png" alt="stone"></div>
-                    <div class="move-container scissor three"><img class="scissor-img" src="images/move-3.png" alt="scissor"></div>
-                    <!-- <img class="stone" src="images/move-1.png" alt="stone"> -->
-                    <!-- <img class="scissor" src="images/move-3.png" alt="scissor"> -->
+                    <div class="move-container stone"><img class="move stone-img" src="images/move-1.png" alt="1">
+                    </div>
+                    <div class="move-container scissor"><img class="move scissor-img" src="images/move-3.png"
+                            alt="3"></div>
                 </div>
                 <span class="line line-1"></span>
                 <span class="line line-2"></span>
                 <span class="line line-3"></span>
-                <div class="move-container paper two"><img class="paper-img" src="images/move-2.png" alt="paper"></div>
-                <!-- <img class="paper" src="images/move-2.png" alt="paper"> -->
+                <div class="move-container paper"><img class="move paper-img" src="images/move-2.png" alt="2"></div>
             </div>
         </div>
         <!-- RULES -->
@@ -55,7 +54,8 @@
             </div>
             <div class="rule-book-container hidden">
                 <h1 class="rule-title">Game Rules</h1>
-                <button class="rule-close-btn-container"><img class="close-btn" src="images/close.png" alt="close"></button>
+                <button class="rule-close-btn-container"><img class="close-btn" src="images/close.png"
+                        alt="close"></button>
                 <div class="rule-book">
                     <span>+</span>
                     <p>Rock beats scissors, scissors beat paper, and paper beats rock.</p>
@@ -72,20 +72,25 @@
         </div>
 
         <!-- You WIN against PC -->
-         <div class="win-container hidden">
+        <div class="win-container hidden">
             <div class="you-win ">
-                <div class="move-container stone"><img class="ston" src="images/move-1.png" alt="stone"></div>
-                <p class="you-win-text">
-                    <!-- <h1>YOU WIN</h1> -->
+                <div class="picked">
+                    <span>YOU PICKED</span>
+                    <p class="move-container your-container"><img class="your-move" src="images/move-1.png" alt="move-image"></p>
+                </div>
+                <div class="you-win-text">
                     <span class="you-win-text-line-1">YOU WIN</span>
                     <span class="you-win-text-line-2">AGAINST PC</span>
                     <button class="play-again-btn">PLAY AGAIN</button>
-                </p>
-                <div class="move-container computer-container"><img class="computer-move ston" src="images/move-1.png" alt="stone"></div>
+                </div>
+                <div class="picked">
+                    <span>PC PICKED</span>
+                    <p class="move-container computer-container "><img class="computer-move" src="images/move-1.png" alt="random-image"></p>
+                </div>
             </div>
         </div>
     </main>
     <script src="rps-script.js"></script>
 </body>
 
-</html> 
+</html>

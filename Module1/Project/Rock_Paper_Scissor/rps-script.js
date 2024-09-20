@@ -1,57 +1,70 @@
-'use strict'
+"use strict";
 
 // Selecting elements
-const stone = document.querySelector('.stone');
-const scissor = document.querySelector('.scissor');
-const paper = document.querySelector('.paper');
-const iconsContainer = document.querySelector('.icons-container');
-const ruleBook = document.querySelector('.rule-book-container');
-const showRule = document.querySelector('.rule-btn');
-const closeBtn = document.querySelector('.rule-close-btn-container');
-const computerContainer = document.querySelector('.computer-container');
-const computerMove = document.querySelector('.computer-move');
-const winContainer = document.querySelector('.win-container');
-const scoreC = document.querySelector('.computer-score');
-const scoreY = document.querySelector('.your-score');
+const stone = document.querySelector(".stone");
+const scissor = document.querySelector(".scissor");
+const paper = document.querySelector(".paper");
+const icons = document.querySelector(".icons-container");
+const ruleBook = document.querySelector(".rule-book-container");
+const showRule = document.querySelector(".rule-btn");
+const closeBtn = document.querySelector(".rule-close-btn-container");
+const PCMoveContainer = document.querySelector(".computer-container");
+const yourMoveContainer = document.querySelector(".your-container");
+const PCMoveEL = document.querySelector(".computer-move");
+const yourMoveEl = document.querySelector(".your-move");
+const moves = document.querySelectorAll(".move");
+const win = document.querySelector(".win-container");
+const playAgain = document.querySelector(".play-again-btn");
+const scoreC = document.querySelector(".computer-score");
+const scoreY = document.querySelector(".your-score");
 
 // Close & Open Rule Modal
-showRule.addEventListener('click', function(){
-    ruleBook.classList.remove('hidden');
+showRule.addEventListener("click", function () {
+  ruleBook.classList.remove("hidden");
 });
 
-closeBtn.addEventListener('click', ()=>{
-    ruleBook.classList.add('hidden');
+closeBtn.addEventListener("click", () => {
+  ruleBook.classList.add("hidden");
 });
 
+// ===========DISPLAY CORRESPOND RANDOM IMAGE============= 
+moves.forEach((move) => {
+  move.addEventListener("click", (event) => {
+    const clickedImageAlt = event.target.alt;
 
-// stone
-stone.addEventListener('click', ()=>{
     // Generating a number
-    const random = Math.trunc(Math.random()*3) + 1;
+    const random = Math.trunc(Math.random() * 3) + 1;
     console.log(random);
 
-    // display the corresponding move
-    iconsContainer.classList.add('hidden');
-    winContainer.classList.remove('hidden');
-    computerMove.src= `images/move-${random}.png`;
-    if(random===1){
-        computerContainer.classList.add('one')
-    }else if(random===2){
-        computerContainer.classList.add('two')
-    }else{
-        computerContainer.classList.add('three')
+    icons.classList.add("hidden");
+    win.classList.remove("hidden");
+    yourMoveEl.src = `images/move-${clickedImageAlt}.png`;
+    PCMoveEL.src = `images/move-${random}.png`;
+    if (clickedImageAlt === "1") {
+      yourMoveContainer.classList.add("one");
+      yourMoveContainer.classList.add("stone-img");
+    } else if (clickedImageAlt === "2") {
+      yourMoveContainer.classList.add("two");
+      yourMoveContainer.classList.add("paper-img");
+    } else {
+      yourMoveContainer.classList.add("three");
+      yourMoveContainer.classList.add("scissor-img");
     }
 
-    // check the result
-})
+    if (random === 1) {
+      PCMoveContainer.classList.add("one");
+    } else if (random === 2) {
+      PCMoveContainer.classList.add("two");
+    } else {
+      PCMoveContainer.classList.add("three");
+    }
 
-// paper
-paper.addEventListener('click', ()=>{
-    console.log('paper clicked');
-})
-// scissor
-scissor.addEventListener('click', ()=>{
-    console.log('scissor clicked');
-})
+  });
+});
 
+// ===========PLAY AGAIN============= 
 
+playAgain.addEventListener('click', ()=>{
+    win.classList.add('hidden');
+    icons.classList.remove('hidden');
+})
