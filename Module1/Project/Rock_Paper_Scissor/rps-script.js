@@ -18,6 +18,9 @@ const playAgain = document.querySelector(".play-again-btn");
 const scoreC = document.querySelector(".computer-score");
 const scoreY = document.querySelector(".your-score");
 
+
+let gameActive = true;
+
 // Close & Open Rule Modal
 showRule.addEventListener("click", function () {
   ruleBook.classList.remove("hidden");
@@ -27,44 +30,85 @@ closeBtn.addEventListener("click", () => {
   ruleBook.classList.add("hidden");
 });
 
+const choice = ['stone', 'paper', 'scissor'];
 // ===========DISPLAY CORRESPOND RANDOM IMAGE============= 
 moves.forEach((move) => {
   move.addEventListener("click", (event) => {
+    if (!gameActive)
+      return;
+
     const clickedImageAlt = event.target.alt;
+    const playerChoice = Number(event.target.alt);
 
-    // Generating a number
+    //1. Generating a number
     const random = Math.trunc(Math.random() * 3) + 1;
-    console.log(random);
 
+    // let human = clickedImageAlt;
+    let pc = random;
+
+    //2. Display the move
     icons.classList.add("hidden");
     win.classList.remove("hidden");
     yourMoveEl.src = `images/move-${clickedImageAlt}.png`;
     PCMoveEL.src = `images/move-${random}.png`;
     if (clickedImageAlt === "1") {
-      yourMoveContainer.classList.add("one");
-      yourMoveContainer.classList.add("stone-img");
+      yourMoveContainer.classList.add("one", "stone-img");
     } else if (clickedImageAlt === "2") {
-      yourMoveContainer.classList.add("two");
-      yourMoveContainer.classList.add("paper-img");
+      yourMoveContainer.classList.add("two", "paper-img");
     } else {
-      yourMoveContainer.classList.add("three");
-      yourMoveContainer.classList.add("scissor-img");
+      yourMoveContainer.classList.add("three", "scissor-img");
     }
 
     if (random === 1) {
-      PCMoveContainer.classList.add("one");
+      PCMoveContainer.classList.add("one", "stone-img");
     } else if (random === 2) {
-      PCMoveContainer.classList.add("two");
+      PCMoveContainer.classList.add("two", "paper-img");
     } else {
-      PCMoveContainer.classList.add("three");
+      PCMoveContainer.classList.add("three", "scissor-img");
     }
 
+    //3. Calculate score
+    if (playerChoice === random) {
+      return "";
+    } else if (
+      (playerChoice === 1 && random === 3) ||
+      (playerChoice === 2 && random === 1) ||
+      (playerChoice === 3 && random === 2)
+    ) {
+      let temp = Number(scoreY.textContent) + 1;
+      scoreY.textContent = temp;
+    } else {
+      let temp = Number(scoreC.textContent) + 1;
+      scoreC.textContent = temp;
+    }
+
+    // Check if someone has won
+    checkForWinner();
   });
 });
 
+// ==== Check for winner
+function checkForWinner() {
+  if (Number(scoreY.textContent) >= 3) {
+    alert('You win');
+    gameActive = false;
+  } else if (Number(scoreC.textContent) >= 3) {
+    alert('you-lost');
+    gameActive = false;
+  }
+}
 // ===========PLAY AGAIN============= 
 
-playAgain.addEventListener('click', ()=>{
-    win.classList.add('hidden');
-    icons.classList.remove('hidden');
+playAgain.addEventListener('click', () => {
+  win.classList.add('hidden');
+  icons.classList.remove('hidden');
+  yourMoveContainer.classList.remove("one", "stone-img");
+  yourMoveContainer.classList.remove("two", "paper-img");
+  yourMoveContainer.classList.remove("three", "scissor-img");
+  PCMoveContainer.classList.remove("one");
+  PCMoveContainer.classList.remove("two");
+  PCMoveContainer.classList.remove("three");
 })
+
+
+// ===========WIN EFFEC
