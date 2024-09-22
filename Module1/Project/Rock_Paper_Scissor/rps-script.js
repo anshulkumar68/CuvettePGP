@@ -30,6 +30,16 @@ const ellipse = document.querySelector('.ellipse');
 // variable
 let gameActive = true;
 
+
+// == USING LOCALSTORAGE ==
+window.addEventListener("load", () => {
+  const savedComputerScore = localStorage.getItem("computerScore");
+  const savedPlayerScore = localStorage.getItem("playerScore");
+
+  scoreC.textContent = savedComputerScore ? savedComputerScore : 0;
+  scoreY.textContent = savedPlayerScore ? savedPlayerScore : 0;
+});
+
 // == Close & Open Rule Modal ==
 ruleBtn.addEventListener('click', () => {
   ruleBook.classList.remove('hidden');
@@ -73,18 +83,22 @@ moves.forEach((move) => {
 
     //3. Calculate score
     if (playerChoice === random) {
+      winLostText1.classList.toggle("hidden");
+      winLostText1.textContent = "TIE UP";
       return '';
     } else if (
       (playerChoice === 1 && random === 3) ||
       (playerChoice === 2 && random === 1) ||
-      (playerChoice === 3 && random === 2)
+      (playerChoice === 3 && random === 2) 
     ) {
       scoreY.textContent = Number(scoreY.textContent) + 1;
       ellipse.classList.remove('hidden');
+      localStorage.setItem("playerScore", scoreY.textContent);
     } else {
       scoreC.textContent = Number(scoreC.textContent) + 1;
       ellipse.classList.remove('hidden');
       ellipse.classList.add('ellipse-transition');
+      localStorage.setItem("computerScore", scoreC.textContent);
     }
 
     // Check if someone has won
@@ -172,9 +186,12 @@ const resetGame = function () {
   ellipse.classList.remove("ellipse-transition-lost");
   ellipse.classList.add("hidden");
   nextBtn.classList.add("hidden");
-  ruleBtn.classList.toggle("rule-btn-transition");
+  // ruleBtn.classList.toggle("rule-btn-transition");
+  localStorage.removeItem("computerScore"); // Clear localStorage
+  localStorage.removeItem("playerScore"); // Clear localStorage
 };
   resetBtn.addEventListener('click', () => {
+     ruleBtn.classList.remove("rule-btn-transition");
     resetGame();
   });
   
