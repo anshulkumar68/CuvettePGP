@@ -1,33 +1,24 @@
 import { useState } from "react";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import Exercises from "./components/Exercises";
-import { Outlet } from "react-router-dom";
+import About from "./components/About";
+import Demo from "./components/Demo";
+import Blog from "./components/Blog";
+import "./App.css";
 
 function App() {
-  const [active, setActive] = useState("home");
-
-  const renderComponent = () => {
-    switch (active){
-      case "home":
-        return <Home/>;
-      case "exercises":
-        return <Exercises/>;
-      default:
-        return <Home/>;
-    }
-  };
-
-  const handleOnClick = ()=> {
-    setSelectedTab("Exercises");
-  }
-
   return (
     <>
-      <Navbar setActive={setActive}/>
-      <Outlet/>
-      {/* {renderComponent()} */}
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/demo" element={<Demo />}></Route>
+          <Route path="/blog" element={<Blog />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

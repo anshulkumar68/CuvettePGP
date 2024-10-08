@@ -1,15 +1,24 @@
-import React from 'react'
-
-const Navbar = ({setActive}) => {
+import React from "react";
+import { NavLink } from "react-router-dom";
+const Navbar = () => {
   return (
     <>
-        <div className='flex gap-10 bg-gray-200 p-5 font-bold text-lg'>
-            <a onClick={()=> setActive('home')} className='hover:text-gray-500' href="#">Home</a>
-            <a onClick={()=> setActive('exercises')} className='hover:text-gray-500' href="#">Exercises</a>
-            <a onClick={()=> setActive('contact')} className='hover:text-gray-500' href="#">Contact</a>
-        </div>
+      <div className="container">
+        <NavLink className="tag" to="/">
+          Home
+        </NavLink>
+        <NavLink className="tag" to="/about">
+          About
+        </NavLink>
+        <NavLink className="tag" to="/demo">
+          Demo
+        </NavLink>
+        <NavLink className="tag" to="/blog">
+          Blog
+        </NavLink>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
