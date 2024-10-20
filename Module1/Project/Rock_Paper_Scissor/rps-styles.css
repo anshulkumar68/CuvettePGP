@@ -102,6 +102,7 @@ main {
 .rock,
 .one {
   border: 1rem solid #0074b6;
+  /* padding: 8rem; */
 }
 .paper,
 .two {

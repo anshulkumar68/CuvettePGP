@@ -3,7 +3,7 @@ import React from 'react'
 const Demo = () => {
   return (
     <div className="common">
-      Wel to the Blog Page!
+      Wel to the Demo Page!
     </div>
   );
 }
