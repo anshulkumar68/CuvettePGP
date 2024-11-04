@@ -66,7 +66,7 @@ const DashboardPage = () => {
       );
       const data = await response.json();
       console.log(NYTAPIKEY);
-      setNews(data.results[0]);
+      setNews(data.results[4]);
     } catch (error) {
       console.error("Error fetching news data:", error);
     } finally {
