@@ -1,19 +1,18 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashboardPage from "./routes/dashboard";
-import CategoriesPage from "./routes/categories";
-import EntertainmentPage from "./routes/entertainment";
-import LoginPage from "./routes/login";
 import ErrorPage from "./routes/404";
+import LoginPage from "./routes/login";
+import Categories from "./routes/categories";
+import EntertainmentPage from "./routes/entertainment";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <DashboardPage />,
-    errorElement: <ErrorPage />,
+    element: <DashboardPage />, // Focus here
+    errorElement: <ErrorPage />, // Focus here
   },
   {
     path: "/login",
@@ -21,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/categories",
-    element: <CategoriesPage />,
+    element: <Categories />, // Focus here 
   },
   {
     path: "/entertainment",
