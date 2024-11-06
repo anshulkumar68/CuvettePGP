@@ -1,21 +1,29 @@
-// src/App.js
 import React, { useState } from "react";
-import Modal from "./components/Modal";
 import "./App.css";
-
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
-    <div className="App">
-      <h1>Pocket Notes</h1>
-      <button className="add-group-btn" onClick={openModal}>
-        +
-      </button>
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
+    <div>
+      <button onClick={handleOpenPopup}>+</button>
+
+      {isPopupOpen && (
+        <div className="overlay">
+          <div className="popup">
+            <h2>Pop-up Content</h2>
+            <p>This is your centered pop-up content.</p>
+            <button onClick={handleClosePopup}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
