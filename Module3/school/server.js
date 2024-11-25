@@ -4,7 +4,7 @@ app.use(express.json())
 var studentArray = require('./initialData')
 const port = 3000
 
-app.get('/', (req, res) => {
+app.get('/student', (req, res) => {
     res.send(studentArray);
 })
 
@@ -42,6 +42,51 @@ app.post('/student', (req, res) => {
     }
     else{
         res.status(404).send('key is missing');
+    }
+})
+
+app.put('/student/:id', (req, res)=>{
+    let id = req.params.id;
+    if(!isNaN(id)){
+        id = parseInt(id);
+        let oldObj = studentArray.find((item)=>{
+            return (item.id === id)
+        })
+        if(oldObj === undefined){
+            res.status(404).send('Student not found')
+        }
+        else{
+            let newObj = req.body;
+            let student = {...oldObj, ...newObj};
+            let index = studentArray.indexOf(oldObj)
+            studentArray[index] = student;
+            // studentArray.splice(index, 1)
+            // studentArray.push(student);
+            res.send(studentArray)
+        }
+    }
+    else{
+        res.send('Invalid ID')
+    }
+})
+
+app.delete('/student/:id', (req, res)=>{
+    let id = req.params.id;
+    if(!isNaN(id)){
+        id = parseInt(id);
+        let oldObj = studentArray.find((item)=>{
+            return (item.id === id)
+        })
+        if(oldObj === undefined){
+            res.status(404).send('Student not found')
+        }
+        else{
+            // let newObj = req.body;
+            // let student = {...oldObj, ...newObj}
+            let index = studentArray.indexOf(oldObj)
+            studentArray.splice(index, 1);
+            res.send(studentArray)
+        }
     }
 })
 
